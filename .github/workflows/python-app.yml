@@ -3,19 +3,16 @@
 
 name: Python application
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request, workflow_dispatch]   
 
 jobs:
-  build:
-
+  python-lint:
     runs-on: ubuntu-latest
-
+    name: CI workflow
     steps:
-    - uses: actions/checkout@v2
+    - name: checkout source repo
+      uses: actions/checkout@v2
+    
     - name: Set up Python 3.10
       uses: actions/setup-python@v2
       with:
